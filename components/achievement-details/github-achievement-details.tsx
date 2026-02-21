@@ -15,6 +15,9 @@ export function GitHubAchievementDetails({
 }: {
   github: AchievementViewData["github"]
 }) {
+  const formatUpdatedDate = (isoDate: string) =>
+    new Date(isoDate).toLocaleDateString("en-US", { timeZone: "UTC" })
+
   const contributionValues = Object.values(github.heatmap)
   const activeDays = contributionValues.filter((c) => c > 0).length
   const maxDaily =
@@ -192,7 +195,7 @@ export function GitHubAchievementDetails({
                           <span>{repo.forkCount}</span>
                         </div>
                         <div>
-                          Updated {new Date(repo.updatedAt).toLocaleDateString()}
+                          Updated {formatUpdatedDate(repo.updatedAt)}
                         </div>
                       </div>
                     </div>

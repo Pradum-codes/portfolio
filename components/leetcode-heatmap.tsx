@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +21,16 @@ export function LeetCodeHeatmap({
   compact = false,
   days = 365,
 }: LeetCodeHeatmapProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div className={cn("w-full", className)} />;
+  }
+
   // Parse the submission calendar data
   const parseSubmissionData = (calendar: string): SubmissionData => {
     try {
