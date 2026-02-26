@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, Award, Star } from "lucide-react";
 import type { AchievementViewData } from "@/lib/achievements-shared";
@@ -15,10 +16,8 @@ export default function CertificationsCard({ certifications }: {
   certifications: AchievementViewData['certifications'];
 }) {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <button
-          type="button"
+        <Link
+          href="/certificates"
           className="group w-full h-full flex flex-col text-left rounded-2xl border border-purple-200/50 bg-gradient-to-br from-purple-50/80 to-pink-50/50 dark:from-purple-950/20 dark:to-pink-950/10 dark:border-purple-800/30 p-6 transition-all hover:-translate-y-2 hover:shadow-xl hover:shadow-purple-500/20"
         >
           <div className="flex items-start justify-between gap-2 shrink-0">
@@ -78,7 +77,7 @@ export default function CertificationsCard({ certifications }: {
 
           {/* Badges for specific certifications */}
           <div className="mt-5 grid grid-cols-2 gap-3">
-            {certificates.map((cert) => (
+            {certificates.slice(0, 1).map((cert) => (
               <div
                 key={cert.title}
                 className="group/cert relative overflow-hidden rounded-lg border border-purple-200/50 bg-white/60 p-3 dark:border-purple-800/30 dark:bg-black/30"
@@ -100,8 +99,6 @@ export default function CertificationsCard({ certifications }: {
             ))}
           </div>
 
-        </button>
-      </DialogTrigger>
-    </Dialog>
+        </Link>
   );
 }
