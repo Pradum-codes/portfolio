@@ -46,18 +46,19 @@ export default function CertificationsCard({ certifications }: {
                 <Star className="h-4 w-4 text-purple-600 dark:text-purple-400" />
                 <span className="text-xs font-medium text-purple-700 dark:text-purple-300">Domains</span>
               </div>
-              <div className="text-2xl font-bold text-purple-900 dark:text-purple-100">{certifications.domains.length}</div>
+              <div className="text-2xl font-bold text-purple-900 dark:text-purple-100">{certifications.domains.length}+</div>
             </div>
           </div>
 
           <div className="mt-5">
             <div className="mb-2 text-xs font-medium text-purple-700 dark:text-purple-300">Expertise Areas</div>
             <div className="flex flex-wrap gap-2">
-              {certifications.domains.map((domain) => (
+              {certifications.domains.slice(0, 4).map((domain) => (
                 <Badge key={domain} className="bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/50 dark:text-purple-200 dark:border-purple-800 text-xs px-2 py-1">
                   {domain}
                 </Badge>
               ))}
+              ...
             </div>
           </div>
 

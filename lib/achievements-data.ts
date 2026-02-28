@@ -41,19 +41,22 @@ const FALLBACK_DATA: AchievementViewData = {
     ],
   },
   certifications: {
-    total: 8,
+    total: 20,
     domains: [
       "Android Development",
       "Backend & Databases",
       "Cloud & DevOps fundamentals",
+      "Networking",
+      "Operating System",
+      "Programming",
+      "Personal Development"
     ],
     providers: [
-      "Google",
-      "HackerRank", 
-      "Amazon Web Services",
+      "AWS Academy",
       "Coursera",
+      "Infosys", 
       "Udemy",
-      "Microsoft"
+      "IamNeo"
     ],
     url: "/#achievements",
   },

@@ -6,8 +6,8 @@ const certificates: Certificate[] = [
     title: "AWS Academy Graduate - Cloud Architecting",
     type: "badge",
     provider: "AWS Academy",
-    domain: "Cloud",
-    language: "English",
+    domain: "Cloud, DevOps",
+    language: "",
     issued: "2024-05",
     image: "/badges/aws-academy-graduate-cloud-architecting-training-ba.png",
     verify:
@@ -21,11 +21,11 @@ const certificates: Certificate[] = [
     type: "certificate",
     provider: "Coursera",
     domain: "Networking",
-    language: "English",
+    language: "",
     issued: "2024-09",
     image: "/certificates/bits-bytes.png",
     verify:
-      "https://www.credly.com/badges/8e8db9af-a31d-47dd-9528-480a6f1a4fc5",
+      "https://www.coursera.org/account/accomplishments/verify/[CERTIFICATE_ID]",
     description:
       "Bits and Bytes of Networking is a beginner-friendly course that explains how data travels across networks, covering IP addresses, DNS, TCP/UDP, routing, and the core protocols that power the internet."
   },
@@ -35,7 +35,7 @@ const certificates: Certificate[] = [
     type: "certificate",
     provider: "Infosys",
     domain: "Artificial Intelligence",
-    language: "English",
+    language: "",
     issued: "2025-08",
     image: "/certificates/chatgpt-4-prompt-engineering.png",
     verify:
@@ -49,7 +49,7 @@ const certificates: Certificate[] = [
     type: "certificate",
     provider: "Coursera",
     domain: "Networking",
-    language: "English",
+    language: "",
     issued: "2024-11",
     image: "/certificates/computer-communication.png",
     verify:
@@ -61,11 +61,11 @@ const certificates: Certificate[] = [
     id: "computer-programming",
     title: "Computer Programming",
     type: "certificate",
-    provider: "neocolab",
+    provider: "IamNeo",
     domain: "Programming",
     language: "C",
     issued: "2024-11",
-    image: "/certificates/computer-communication.png",
+    image: "/certificates/computer-programming.png",
     verify:
       "https://coursera.org/verify/specialization/YRLNIBYJJHEM",
     description:
@@ -76,7 +76,7 @@ const certificates: Certificate[] = [
     title: "Databases and SQL for Data Science with Python",
     type: "certificate",
     provider: "Coursera",
-    domain: "Data Science",
+    domain: "Data Science, Programming",
     language: "Python",
     issued: "2024-03",
     image: "/certificates/data-science-python.png",
@@ -91,12 +91,12 @@ const certificates: Certificate[] = [
     type: "certificate",
     provider: "Coursera",
     domain: "Personal Development",
-    language: "English",
+    language: "",
     issued: "2023-11",
     image: "/certificates/leadership.png",
     verify:
         "https://coursera.org/verify/CYTPAF82Z95K",
-    description:"Leading Teams: Developing as a Leader is a course focused on building effective leadership skills, covering team dynamics, communication, motivation, and strategies for guiding teams toward high performance and shared goals."
+    description: "Leading Teams: Developing as a Leader is a course focused on building effective leadership skills, covering team dynamics, communication, motivation, and strategies for guiding teams toward high performance and shared goals."
   },
   {
     id: "digital-systems",
@@ -104,7 +104,7 @@ const certificates: Certificate[] = [
     type: "certificate",
     provider: "Coursera",
     domain: "Electronics",
-    language: "English",
+    language: "",
     issued: "2024-11",
     image: "/certificates/digital-systems.png",
     verify:
@@ -117,7 +117,7 @@ const certificates: Certificate[] = [
     type: "certificate",
     provider: "Coursera",
     domain: "Networking",
-    language: "English",
+    language: "",
     issued: "2024-11",
     image: "/certificates/fundamental-network-communication.png",
     verify:
@@ -129,8 +129,8 @@ const certificates: Certificate[] = [
     title: "Build Generative AI Apps and Solutions with No-Code Tools",
     type: "certificate",
     provider: "Infosys",
-    domain: "Artificial Intlligence",
-    language: "English",
+    domain: "Artificial Intelligence",
+    language: "",
     issued: "2025-08",
     image: "/certificates/gen-ai.png",
     verify:
@@ -143,7 +143,7 @@ const certificates: Certificate[] = [
     type: "certificate",
     provider: "Coursera",
     domain: "Operating System, Computer Architecture",
-    language: "English",
+    language: "",
     issued: "2025-08",
     image: "/certificates/hardware-os.png",
     verify:
@@ -168,13 +168,118 @@ const certificates: Certificate[] = [
     title: "MERN",
     type: "certificate",
     provider: "CipherSchool",
-    domain: "Web Development",
+    domain: "Web Development, Programming",
     language: "Javascript",
     issued: "2025-07",
     image: "/certificates/mern.png",
     verify:
         "https://www.cipherschools.com/certificate/preview?id=687dc93d3eaa79325b2d2b0a",
     description: "MERN is a full-stack web development course that teaches how to build dynamic web applications using MongoDB, Express.js, React, and Node.js, covering backend APIs, frontend UI, and database integration."
+  },
+  {
+    id: "dsa",
+    title: "Data Structures and Algorthim",
+    type: "certificate",
+    provider: "IamNeo",
+    domain: "Programming, Data Structures, Algorithm",
+    language: "C++",
+    issued: "2024-12",
+    image: "/certificates/dsa.png",
+    verify:
+      "https://lpucolab438.examly.io/certificate/U2FsdGVkX1%2BfvCsoZfoR21B%2Bcz1UVAJPS6A9gw8a4Fw%3D",
+    description:
+      "Computer Programming C is a foundational course that teaches the basics of C programming, including syntax, data types, control structures, functions, pointers, and memory management for building efficient low-level applications."
+  },
+  {
+    id: "java-beginners",
+    title: "Java for complete beginners",
+    type: "certificate",
+    provider: "Udemy",
+    domain: "Programming, Data Structures, Algorithm",
+    language: "Java",
+    issued: "2024-02",
+    image: "/certificates/java-beginners.png",
+    verify: "",
+    description:
+      "Computer Programming C is a foundational course that teaches the basics of C programming, including syntax, data types, control structures, functions, pointers, and memory management for building efficient low-level applications."
+  },
+  {
+    id: "oops",
+    title: "Object Oriented Programming",
+    type: "certificate",
+    provider: "IamNeo",
+    domain: "Programming",
+    language: "C++",
+    issued: "2024-12",
+    image: "/certificates/oops.png",
+    verify: "https://lpucolab438.examly.io/certificate/U2FsdGVkX19hFl6IPpvadxZy8ih4W9JZYayUXOyBwQI%3D",
+    description:
+      "Object-Oriented Programming (OOP) is a programming paradigm that organizes code around objects and classes, emphasizing encapsulation, inheritance, abstraction, and polymorphism to build modular and reusable software systems."
+  },
+  {
+    id: "packet-switching",
+    title: "Packet Switching Networks and Algorithms",
+    type: "certificate",
+    provider: "Coursera",
+    domain: "Networking",
+    language: "",
+    issued: "2024-11",
+    image: "/certificates/packet-switching.png",
+    verify: "https://coursera.org/verify/DYX12B0Y7UJM",
+    description:
+      "Packet Switching Networks and Algorithms is a comprehensive course that explores the principles of packet-switched communication, network architectures, and routing algorithms, focusing on TCP/IP, OSI models, graph theory, and performance optimization in computer networks."
+  },
+  {
+    id: "ptop-lan",
+    title: "Peer to Peer Protocols and Local Area Network",
+    type: "certificate",
+    provider: "Coursera",
+    domain: "Networking",
+    language: "",
+    issued: "2024-11",
+    image: "/certificates/ptop-lan.png",
+    verify: "https://www.coursera.org/verify/KERQ5QOXGAJ1",
+    description:
+      "Peer-to-Peer Protocols and Local Area Networks is a course focused on decentralized network architectures and LAN technologies, covering peer-to-peer communication models, Ethernet, switching, and efficient data sharing within local networks."
+  },
+  {
+    id: "responsive-web-design",
+    title: "Responsive Web Design",
+    type: "certificate",
+    provider: "freeCodeCamp",
+    domain: "Web Development",
+    language: "Javascript",
+    issued: "2023-11",
+    image: "/certificates/responsive-web-design.png",
+    verify: "https://www.freecodecamp.org/certification/fcc0dd2cfa6-808b-439b-9c71-50de0c0c7e77/responsive-web-design",
+    description:
+      "Responsive Web Design is a web development approach that uses flexible layouts, media queries, and adaptive techniques to create websites that automatically adjust and perform seamlessly across different screen sizes and devices."
+  },
+  {
+    id: "tcp-ip",
+    title: "TCP/IP and Advanced Topic",
+    type: "certificate",
+    provider: "Coursera",
+    domain: "Networking",
+    language: "",
+    issued: "2024-11",
+    image: "/certificates/tcp-ip.png",
+    verify: "https://coursera.org/verify/25PVSXRCMPF0",
+    description:
+      "TCP/IP and Advanced Topics is a course that explores the architecture and operation of the TCP/IP protocol suite, including congestion control, flow management, network security, and advanced routing and transport-layer mechanisms."
+  },
+  {
+    id: "flat",
+    title: "Computational Theory: Language Principle & Finite Automata Theory",
+    type: "certificate",
+    provider: "Infosys",
+    domain: "Computational Theory",
+    language: "",
+    issued: "2024-02",
+    image: "/certificates/flat.png",
+    verify: "https://verify.onwingspan.com",
+    description:
+      "Computational Theory: Language Principles & Finite Automata Theory explores the mathematical foundations of computation, focusing on formal languages, regular expressions, deterministic and nondeterministic finite automata, and the theoretical limits of language recognition."
   },
 ]
 

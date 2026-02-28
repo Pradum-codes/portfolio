@@ -30,10 +30,37 @@ const domainColors: Record<string, string> = {
   Frontend: "bg-violet-500/10 text-violet-400 border-violet-500/20",
   DevOps: "bg-orange-500/10 text-orange-400 border-orange-500/20",
   Data: "bg-pink-500/10 text-pink-400 border-pink-500/20",
+  Networking: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+  "Artificial Intelligence": "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+  Programming: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+  "Data Science": "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+  "Personal Development": "bg-amber-500/10 text-amber-400 border-amber-500/20",
+  Electronics: "bg-red-500/10 text-red-400 border-red-500/20",
+  "Operating System": "bg-indigo-500/10 text-indigo-400 border-indigo-500/20",
+  "Computer Architecture": "bg-slate-500/10 text-slate-400 border-slate-500/20",
+  "Web Development": "bg-teal-500/10 text-teal-400 border-teal-500/20",
 }
 
 function getDomainClass(domain: string) {
-  return domainColors[domain] ?? "bg-muted text-muted-foreground border-border"
+  return domainColors[domain.trim()] ?? "bg-muted text-muted-foreground border-border"
+}
+
+// Helper function to render domain badges
+function renderDomainBadges(domainString: string, className: string = "text-[10px]") {
+  const domains = domainString.split(",").map(d => d.trim())
+  
+  return (
+    <>
+      {domains.map((domain, index) => (
+        <span
+          key={index}
+          className={`inline-flex items-center px-1.5 py-0.5 rounded-full font-medium border ${getDomainClass(domain)} ${className}`}
+        >
+          {domain}
+        </span>
+      ))}
+    </>
+  )
 }
 
 export default function CertificatesPage() {
@@ -47,13 +74,27 @@ export default function CertificatesPage() {
   })
 
   const getUniqueValues = (key: keyof Certificate): string[] => {
-    return ["All", ...new Set(certificates.map((c) => c[key] as string))]
+    if (key === "domain") {
+      // Handle comma-separated domains
+      const allDomains = certificates.flatMap((c) => 
+        c.domain.split(",").map(d => d.trim())
+      ).filter(domain => domain !== "" && domain)
+      return ["All", ...new Set(allDomains)]
+    }
+    // Filter out empty strings and falsy values
+    const values = certificates
+      .map((c) => c[key] as string)
+      .filter(value => value !== "" && value)
+    return ["All", ...new Set(values)]
   }
 
   const filteredCertificates = useMemo(() => {
     return certificates.filter((cert) => {
+      const domainMatch = filters.domain === "All" || 
+        cert.domain.split(",").map(d => d.trim()).includes(filters.domain)
+      
       return (
-        (filters.domain === "All" || cert.domain === filters.domain) &&
+        domainMatch &&
         (filters.provider === "All" || cert.provider === filters.provider) &&
         (filters.language === "All" || cert.language === filters.language)
       )
@@ -76,7 +117,7 @@ export default function CertificatesPage() {
     filterKey: keyof Filters
   }) => (
     <div className="mb-5">
-      <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-2">
+      <p className="text-xs text-accent uppercase tracking-widest font-semibold mb-2">
         {title}
       </p>
       <div className="flex flex-wrap gap-1.5">
@@ -106,7 +147,9 @@ export default function CertificatesPage() {
     { label: "Total", value: certificates.length },
     {
       label: "Domains",
-      value: new Set(certificates.map((c) => c.domain)).size
+      value: new Set(certificates.flatMap((c) => 
+        c.domain.split(",").map(d => d.trim())
+      )).size
     },
     {
       label: "Providers",
@@ -185,7 +228,7 @@ export default function CertificatesPage() {
         >
           <div className="sticky top-8 space-y-1">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+              <span className="text-xs font-semibold uppercase tracking-widest text-primary">
                 Filter by
               </span>
               {activeFilterCount > 0 && (
@@ -266,14 +309,10 @@ export default function CertificatesPage() {
                         {cert.provider}
                       </p>
                       <div className="flex items-center gap-1 flex-wrap">
-                        <span
-                          className={`inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium border ${getDomainClass(cert.domain)}`}
-                        >
-                          {cert.domain}
-                        </span>
-                        <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium border bg-muted/40 text-muted-foreground border-border capitalize">
+                        {renderDomainBadges(cert.domain, "text-[10px]")}
+                        {/* <span className="inline-flex items-center px-1.5 py-0.5 rounded-full text-[10px] font-medium border bg-muted/40 text-muted-foreground border-border capitalize">
                           {cert.type}
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </CardContent>
@@ -287,20 +326,30 @@ export default function CertificatesPage() {
       {/* Dialog */}
       <Dialog open={!!selectedCert} onOpenChange={() => setSelectedCert(null)}>
         {selectedCert && (
-          <DialogContent className="max-w-2xl overflow-hidden rounded-2xl p-0 gap-0">
+          <DialogContent className="max-w-[95vw] sm:max-w-2xl overflow-hidden rounded-2xl p-0 gap-0 [&>button]:hidden">
             <div
               className="absolute inset-0 bg-cover bg-center blur-2xl opacity-10 scale-110"
               style={{ backgroundImage: `url(${selectedCert.image})` }}
             />
 
-            <div className="relative z-10 p-6">
-              <DialogHeader className="mb-4">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <DialogTitle className="text-lg leading-snug">
+            <div className="relative z-10 p-4 sm:p-6">
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20">
+                <button
+                  onClick={() => setSelectedCert(null)}
+                  className="rounded-full p-2 bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-muted/80 transition-colors shadow-sm touch-manipulation"
+                  aria-label="Close dialog"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+              
+              <DialogHeader className="mb-4 pr-10 sm:pr-12">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4">
+                  <div className="flex-1">
+                    <DialogTitle className="text-base sm:text-lg leading-snug pr-2">
                       {selectedCert.title}
                     </DialogTitle>
-                    <DialogDescription className="mt-1">
+                    <DialogDescription className="mt-1 text-sm">
                       Issued by{" "}
                       <span className="text-foreground font-medium">
                         {selectedCert.provider}
@@ -308,12 +357,10 @@ export default function CertificatesPage() {
                       &middot; {selectedCert.issued}
                     </DialogDescription>
                   </div>
-                  <div className="flex flex-col gap-1.5 items-end shrink-0">
-                    <span
-                      className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium border ${getDomainClass(selectedCert.domain)}`}
-                    >
-                      {selectedCert.domain}
-                    </span>
+                  <div className="flex flex-col gap-1.5 items-start sm:items-end">
+                    <div className="flex flex-wrap gap-1 justify-start sm:justify-end">
+                      {renderDomainBadges(selectedCert.domain, "text-xs")}
+                    </div>
                     <span className="inline-flex px-2 py-0.5 rounded-full text-xs font-medium border bg-muted/40 text-muted-foreground border-border capitalize">
                       {selectedCert.type}
                     </span>
@@ -321,23 +368,23 @@ export default function CertificatesPage() {
                 </div>
               </DialogHeader>
 
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
                 <div className="rounded-xl overflow-hidden border border-border/50 bg-muted/20">
                   <img
                     src={selectedCert.image}
                     alt={selectedCert.title}
-                    className="w-full object-contain"
+                    className="w-full object-contain max-h-48 sm:max-h-none"
                   />
                 </div>
 
-                <div className="flex flex-col gap-4">
-                  <ScrollArea className="h-36">
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <ScrollArea className="h-32 sm:h-36">
                     <p className="text-sm text-muted-foreground leading-relaxed pr-2">
                       {selectedCert.description}
                     </p>
                   </ScrollArea>
 
-                  <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     {[
                       { label: "Domain", value: selectedCert.domain },
                       { label: "Language", value: selectedCert.language },
@@ -349,13 +396,13 @@ export default function CertificatesPage() {
                         className="bg-muted/30 rounded-lg px-3 py-2 border border-border/50"
                       >
                         <p className="text-muted-foreground mb-0.5">{label}</p>
-                        <p className="font-medium capitalize">{value}</p>
+                        <p className="font-medium capitalize break-words">{value}</p>
                       </div>
                     ))}
                   </div>
 
                   <Button
-                    className="w-full gap-2"
+                    className="w-full gap-2 h-10 sm:h-9 touch-manipulation"
                     onClick={() => window.open(selectedCert.verify, "_blank")}
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
