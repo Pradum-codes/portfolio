@@ -2,98 +2,14 @@
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github } from "lucide-react"
+import { Dialog, DialogTrigger } from "@/components/ui/dialog"
+import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog"
 import projects from "@/data/projects"
-
-interface Project {
-  title: string
-  description: string
-  image: string
-  technologies: string[]
-  liveUrl: string
-  githubUrl: string
-}
-
-interface ProjectDialogProps {
-  project: Project
-}
-
-function ProjectDialog({ project }: ProjectDialogProps) {
-  return (
-    <DialogContent className="max-w-3xl p-0 overflow-hidden">
-      <DialogHeader className="p-6 pb-0">
-        <DialogTitle className="text-xl">
-          {project.title}
-        </DialogTitle>
-        <DialogDescription className="text-sm text-muted-foreground">
-          Detailed project overview
-        </DialogDescription>
-      </DialogHeader>
-
-      {/* Image */}
-      <div className="relative h-56 w-full mt-4">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className="object-cover"
-        />
-      </div>
-
-      {/* Body */}
-      <div className="p-6 space-y-5">
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {project.description}
-        </p>
-
-        <div className="flex flex-wrap gap-2">
-          {project.technologies.map((tech) => (
-            <Badge key={tech} variant="secondary">
-              {tech}
-            </Badge>
-          ))}
-        </div>
-
-        <div className="flex gap-3 pt-2">
-          <Button asChild>
-            <Link
-              href={project.liveUrl}
-              target="_blank"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Live Demo
-            </Link>
-          </Button>
-
-          <Button variant="outline" asChild>
-            <Link
-              href={project.githubUrl}
-              target="_blank"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Github className="h-4 w-4 mr-2" />
-              GitHub
-            </Link>
-          </Button>
-        </div>
-      </div>
-    </DialogContent>
-  )
-}
-
-
+import { Project } from "@/types/project"
+import { ProjectDialogContent } from "@/components/project-dialog"
 
 export function Projects() {
   const titleAnimation = useScrollAnimation({ threshold: 0.3 })
@@ -104,15 +20,23 @@ export function Projects() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div ref={titleAnimation.ref}>
-            <h2
-              className={`text-3xl sm:text-4xl font-semibold mb-12 transition-all duration-700 ${
-                titleAnimation.isVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-10"
-              }`}
-            >
-              Selected Work
-            </h2>
+              <div className="flex items-center justify-between mb-12">
+                <h2
+                  className={`text-3xl sm:text-4xl font-semibold transition-all duration-700 ${
+                    titleAnimation.isVisible
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-10"
+                  }`}
+                >
+                  Selected Work
+                </h2>
+                <Button asChild size="sm" variant="outline" className="flex items-center gap-2">
+                  <Link href="/projects">
+                    View all projects
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
           </div>
 
           <div
@@ -121,23 +45,18 @@ export function Projects() {
           >
             {projects.map((project, index) => (
               <Dialog key={project.title}>
-                {/* CARD = TRIGGER */}
                 <DialogTrigger asChild>
                   <div
-                    className={`group cursor-pointer border border-border/70 bg-card/50 rounded-2xl overflow-hidden
-                    transition-[transform,box-shadow] duration-500
-                    hover:shadow-lg hover:-translate-y-1
-                    ${
+                    className={`group cursor-pointer border border-border/70 bg-card/50 rounded-2xl overflow-hidden transition-[transform,box-shadow] duration-500 hover:shadow-lg hover:-translate-y-1 ${
                       projectsAnimation.isVisible
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-10"
                     }`}
                     style={{ transitionDelay: `${index * 120}ms` }}
                   >
-                    {/* Image */}
                     <div className="relative h-36 w-full">
                       <Image
-                        src={project.image}
+                        src={project.images[0]}
                         alt={project.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -147,7 +66,6 @@ export function Projects() {
                       </span>
                     </div>
 
-                    {/* Content */}
                     <div className="p-4 space-y-3">
                       <div>
                         <h3 className="text-lg font-semibold line-clamp-2">
@@ -173,8 +91,7 @@ export function Projects() {
                   </div>
                 </DialogTrigger>
 
-                {/* DIALOG CONTENT */}
-                <ProjectDialog project={project} />
+                <ProjectDialogContent project={project} />
               </Dialog>
             ))}
           </div>
@@ -184,4 +101,3 @@ export function Projects() {
     </section>
   )
 }
-
