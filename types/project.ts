@@ -3,7 +3,7 @@ export interface Project {
   title: string
   description: string
   longDescription: string
-  images: string[]
+  images: string | string[]
   technologies: string[]
   category: string
   status: "completed" | "in-progress" | "archived"

@@ -4,6 +4,7 @@ import { useState, useMemo } from "react"
 import Link from "next/link"
 import projects from "@/data/projects"
 import { Project } from "@/types/project"
+import { getProjectImages } from "@/lib/project-images"
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -261,7 +262,9 @@ export default function ProjectsPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {filteredProjects.map((project) => (
+                {filteredProjects.map((project) => {
+                  const images = getProjectImages(project.images)
+                  return (
                   <Card
                     key={project.id}
                     onClick={() => setSelectedProject(project)}
@@ -270,7 +273,7 @@ export default function ProjectsPage() {
                     <CardContent className="p-0">
                       <div className="relative overflow-hidden bg-muted/30">
                         <img
-                          src={project.images[0]}
+                          src={images[0]}
                           alt={project.title}
                           className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                         />
@@ -313,7 +316,7 @@ export default function ProjectsPage() {
                       </div>
                     </CardContent>
                   </Card>
-                ))}
+                )})}
               </div>
             )}
           </div>

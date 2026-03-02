@@ -10,6 +10,7 @@ import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import projects from "@/data/projects"
 import { Project } from "@/types/project"
 import { ProjectDialogContent } from "@/components/project-dialog"
+import { getProjectImages } from "@/lib/project-images"
 
 export function Projects() {
   const titleAnimation = useScrollAnimation({ threshold: 0.3 })
@@ -43,7 +44,9 @@ export function Projects() {
             ref={projectsAnimation.ref}
             className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           >
-            {projects.map((project, index) => (
+            {projects.map((project, index) => {
+              const images = getProjectImages(project.images)
+              return (
               <Dialog key={project.title}>
                 <DialogTrigger asChild>
                   <div
@@ -56,7 +59,7 @@ export function Projects() {
                   >
                     <div className="relative h-36 w-full">
                       <Image
-                        src={project.images[0]}
+                        src={images[0]}
                         alt={project.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -93,7 +96,7 @@ export function Projects() {
 
                 <ProjectDialogContent project={project} />
               </Dialog>
-            ))}
+            )})}
           </div>
 
         </div>

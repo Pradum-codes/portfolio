@@ -5,6 +5,9 @@ import Link from "next/link"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 import {
   Carousel,
   CarouselContent,
@@ -12,11 +15,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { ExternalLink, Github, Sparkles, X } from "lucide-react"
 import { Project } from "@/types/project"
+import { getProjectImages } from "@/lib/project-images"
 
 interface ProjectDialogProps {
   project: Project
@@ -24,6 +25,8 @@ interface ProjectDialogProps {
 }
 
 export function ProjectDialogContent({ project, onClose }: ProjectDialogProps) {
+  const images = getProjectImages(project.images)
+
   return (
     <DialogContent
       hideCloseButton
@@ -32,7 +35,7 @@ export function ProjectDialogContent({ project, onClose }: ProjectDialogProps) {
       <div className="relative">
         <div
           className="absolute inset-0 bg-cover bg-center blur-2xl opacity-10 scale-110 pointer-events-none"
-          style={{ backgroundImage: `url(${project.images[0]})` }}
+          style={{ backgroundImage: `url(${images[0]})` }}
         />
 
         <div className="relative z-10 p-4 sm:p-6">
@@ -71,43 +74,37 @@ export function ProjectDialogContent({ project, onClose }: ProjectDialogProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
             <div className="rounded-xl border border-border/50 bg-muted/20">
-              {project.images.length > 1 ? (
-                <AspectRatio ratio={16 / 9} className="w-full h-full overflow-hidden">
-                  <Carousel
-                    className="h-full w-full"
-                    opts={{ loop: true, align: "center", containScroll: "trimSnaps" }}
-                  >
-                    <CarouselContent className="h-full w-full gap-0">
-                      {project.images.map((image, index) => (
-                        <CarouselItem
-                          key={`${project.id}-${index}`}
-                          className="h-full w-full relative"
-                        >
-                          <Image
-                            src={image}
-                            alt={`${project.title} - ${index + 1}`}
-                            fill
-                            className="h-full w-full object-cover"
-                            sizes="(min-width: 768px) 50vw, 100vw"
-                          />
-                        </CarouselItem>
-                      ))}
-                    </CarouselContent>
-                    <CarouselPrevious className="!left-3 !h-8 !w-8 sm:!left-5" />
-                    <CarouselNext className="!right-3 !h-8 !w-8 sm:!right-5" />
-                  </Carousel>
-                </AspectRatio>
-              ) : (
-                <AspectRatio ratio={16 / 9} className="w-full overflow-hidden">
-                  <Image
-                    src={project.images[0]}
-                    alt={project.title}
-                    fill
-                    className="h-full w-full object-cover"
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                  />
-                </AspectRatio>
-              )}
+              <Carousel
+                className="w-full"
+                opts={{ align: "start", loop: images.length > 1 }}
+              >
+                <CarouselContent className="-ml-0">
+                  {images.map((image, index) => (
+                    <CarouselItem key={`${image}-${index}`} className="pl-0">
+                      <AspectRatio ratio={16 / 9} className="w-full overflow-hidden">
+                        <Image
+                          src={image}
+                          alt={`${project.title} screenshot ${index + 1}`}
+                          fill
+                          className="h-full w-full object-cover"
+                          sizes="(min-width: 768px) 50vw, 100vw"
+                        />
+                      </AspectRatio>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+
+                {images.length > 1 && (
+                  <>
+                    <CarouselPrevious
+                      className="left-2 h-8 w-8 bg-background/80 backdrop-blur-sm border-border/60 hover:bg-background"
+                    />
+                    <CarouselNext
+                      className="right-2 h-8 w-8 bg-background/80 backdrop-blur-sm border-border/60 hover:bg-background"
+                    />
+                  </>
+                )}
+              </Carousel>
             </div>
 
             <div className="flex flex-col gap-3 sm:gap-4">
