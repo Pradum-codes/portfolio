@@ -24,7 +24,7 @@ export function Hero() {
                 <Link href="#projects">See the Work</Link>
               </Button>
               <Button size="lg" variant="outline" asChild className="transition-all hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(80,180,255,0.2)]">
-                <Link href="#contact">Start a Project</Link>
+                <Link href="/cv">Explore My CV</Link>
               </Button>
             </div>
 

@@ -22,13 +22,12 @@ const Logo = memo(function Logo({
       aria-label="Go to home"
       className={`group inline-flex items-center gap-3 no-underline ${className}`}
     >
-      {/* Replace PKMark with your image */}
       <span
         aria-hidden
         className="relative inline-grid h-9 w-9 place-items-center rounded-2xl border border-current/20 bg-gradient-to-br from-current/10 to-transparent shadow-sm overflow-hidden"
       >
         <Image
-          src="/me.jpg" // place me.jpg inside /public
+          src="/favicon.svg"
           alt="Pradum Kumar Logo"
           width={36}
           height={36}
