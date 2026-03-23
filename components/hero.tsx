@@ -57,7 +57,13 @@ export function Hero() {
             <div className="border border-border/70 bg-card/60 backdrop-blur-xl rounded-2xl p-6 animate-fadeInRight">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-mono uppercase tracking-[0.4em] text-muted-foreground">Now</p>
-                <span className="text-xs font-mono text-primary">Available</span>
+                <span className="inline-flex items-center gap-2 text-xs font-mono text-primary">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" />
+                  </span>
+                  Available
+                </span>
               </div>
               <p className="mt-4 text-lg">
                 Building scalable systems with a focus on correctness, performance, and long-term maintainability.

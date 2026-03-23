@@ -6,6 +6,7 @@ import { Projects } from "@/components/projects"
 import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import { Achievement } from "@/components/achievements/achievement";
+import { Education } from "@/components/education";
 
 export default function Portfolio() {
     return (
@@ -17,6 +18,7 @@ export default function Portfolio() {
                 <Skills />
                 <Projects />
                 <Achievement />
+                <Education />
                 <Contact />
             </main>
             <Footer />

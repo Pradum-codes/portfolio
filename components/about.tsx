@@ -24,7 +24,8 @@ export function About() {
                   : "opacity-0 translate-y-10"
               }`}
             >
-              Manifesto
+              {/* Manifesto */}
+              About Me
             </h2>
 
             <div className="flex items-center gap-3 mb-12">
@@ -74,9 +75,10 @@ export function About() {
 
             <div className="relative min-h-[340px] lg:min-h-0 lg:col-start-3 lg:row-start-1 lg:row-span-3 border border-border/70 bg-card/60 rounded-3xl p-3 backdrop-blur-sm overflow-hidden">
               <Image
-                src="/me.jpg"
+                src="/me.png"
                 alt="Pradum Kumar"
                 fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 className="object-cover rounded-2xl"
                 priority
               />
