@@ -44,7 +44,8 @@ export function Projects() {
             ref={projectsAnimation.ref}
             className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           >
-            {projects.map((project, index) => {
+            {/* Show top 4 projects */}
+            {projects.slice(0, 4).map((project, index) => {
               const images = getProjectImages(project.images)
               return (
               <Dialog key={project.title}>

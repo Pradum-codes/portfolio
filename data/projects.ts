@@ -12,6 +12,7 @@ const projects: Project[] = [
     technologies: ["C++", "OpenGL", "GLFW"],
     category: "Desktop",
     status: "completed",
+    isLive: false,
     liveUrl: "https://github.com/Pradum-codes/Real-Time-Process-Monitoring-Dashboard",
     githubUrl: "https://github.com/Pradum-codes/Real-Time-Process-Monitoring-Dashboard",
     highlights: [
@@ -31,6 +32,7 @@ const projects: Project[] = [
     technologies: ["Kotlin", "Jetpack Compose", "Android", "Material Design 3"],
     category: "Mobile",
     status: "completed",
+    isLive: false,
     liveUrl: "https://github.com/Pradum-codes/Project-Tracker-App",
     githubUrl: "https://github.com/Pradum-codes/Project-Tracker-App",
     highlights: [
@@ -50,6 +52,7 @@ const projects: Project[] = [
     technologies: ["NextJS", "WebRTC", "Supabase"],
     category: "Web",
     status: "completed",
+    isLive: true,
     liveUrl: "https://dropr.pradum.dev",
     githubUrl: "https://github.com/Pradum-codes/packet-post",
     highlights: [
@@ -71,7 +74,8 @@ const projects: Project[] = [
     technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Vercel"],
     category: "Web",
     status: "completed",
-    liveUrl: "https://github.com/Pradum-codes/CookClever",
+    isLive: true,
+    liveUrl: "https://cook-clever.pradum.dev/",
     githubUrl: "https://github.com/Pradum-codes/CookClever",
     highlights: [
       "Lightning-fast recipe search with instant results",
@@ -98,6 +102,7 @@ const projects: Project[] = [
 		],
 		category: "AI",
 		status: "completed",
+		isLive: true,
 		liveUrl: "https://ai-debate-patner.vercel.app/",
 		githubUrl: "https://github.com/Pradum-codes/ai-debate-patner",
 
@@ -123,6 +128,7 @@ const projects: Project[] = [
 		],
 		category: "Educational",
 		status: "completed",
+		isLive: true,
 		liveUrl: "https://ip-under-the-hood.vercel.app/",
 		githubUrl: "https://github.com/Pradum-codes/ip-under-the-hood",
 		highlights: [

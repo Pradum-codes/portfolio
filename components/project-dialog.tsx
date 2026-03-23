@@ -142,15 +142,28 @@ export function ProjectDialogContent({ project, onClose }: ProjectDialogProps) {
               </div>
 
               <div className="flex gap-2 mt-auto">
-                <Button
-                  className="flex-1 gap-2 h-10 sm:h-9 touch-manipulation"
-                  asChild
-                >
-                  <Link href={project.liveUrl} target="_blank" rel="noreferrer">
-                    <ExternalLink className="w-3.5 h-3.5" />
-                    Live Demo
-                  </Link>
-                </Button>
+                {project.isLive ? (
+                  <Button
+                    className="flex-1 gap-2 h-10 sm:h-9 touch-manipulation"
+                    asChild
+                  >
+                    <Link href={project.liveUrl} target="_blank" rel="noreferrer">
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      Live Demo
+                    </Link>
+                  </Button>
+                ) : (
+                  <span className="flex-1" title="No live url present">
+                    <Button
+                      className="w-full gap-2 h-10 sm:h-9 touch-manipulation"
+                      disabled
+                      aria-disabled="true"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      Live Demo
+                    </Button>
+                  </span>
+                )}
                 <Button
                   variant="outline"
                   className="flex-1 gap-2 h-10 sm:h-9 touch-manipulation"
