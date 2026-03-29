@@ -2,8 +2,8 @@ import { Project } from "@/types/project"
 
 const projects: Project[] = [
   {
-    id: "process-monitoring-dashboard",
-    title: "Real Time Process Monitoring Dashboard",
+    id: "pulse-scope",
+    title: "PulseScope",
     description:
       "Graphical dashboard that displays real-time process states, CPU usage, and memory consumption with low-latency updates.",
     longDescription:
@@ -12,8 +12,8 @@ const projects: Project[] = [
     technologies: ["C++", "OpenGL", "GLFW"],
     category: "Desktop",
     status: "completed",
-    isLive: false,
-    liveUrl: "https://github.com/Pradum-codes/Real-Time-Process-Monitoring-Dashboard",
+    isLive: true,
+    liveUrl: "https://pradum-codes.github.io/pulse-scope",
     githubUrl: "https://github.com/Pradum-codes/Real-Time-Process-Monitoring-Dashboard",
     highlights: [
       "Real-time CPU & memory graphs rendered with OpenGL",
@@ -22,18 +22,18 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "project-tracker-app",
-    title: "Project Tracker App",
+    id: "plannr",
+    title: "plannr",
     description:
       "Collaborative task management application with real-time updates, team collaboration, and project tracking.",
     longDescription:
       "A native Android application built with Kotlin and Jetpack Compose that enables teams to create, assign, and track tasks in real time. Features include project boards, task assignments with due dates, progress tracking, and push notifications for updates. The modern Material Design 3 UI ensures a smooth, intuitive experience on all screen sizes.",
-    images: "/projects/project-tracker.jpg , /projects/project-tracker.jpg",
+    images: "/projects/plannr.png",
     technologies: ["Kotlin", "Jetpack Compose", "Android", "Material Design 3"],
     category: "Mobile",
-    status: "completed",
-    isLive: false,
-    liveUrl: "https://github.com/Pradum-codes/Project-Tracker-App",
+    status: "in-progress",
+    isLive: true,
+    liveUrl: "https://pradum-codes.github.io/plannr",
     githubUrl: "https://github.com/Pradum-codes/Project-Tracker-App",
     highlights: [
       "Real-time task synchronisation across team members",
@@ -135,6 +135,56 @@ const projects: Project[] = [
 			"Interactive visualization explaining how IP addresses work",
 			"Simplifies networking concepts like DNS resolution and request routing",
 			"Clean educational interface designed for students learning internet fundamentals"
+		],
+	},
+    {
+		id: "currency-converter",
+		title: "Currency Converter",
+		description:
+			"A simple and efficient currency converter that provides real-time exchange rates for multiple currencies.",
+		longDescription:
+			"The Currency Converter is a lightweight web application that allows users to quickly convert between different currencies using up-to-date exchange rates. Built with modern web technologies, the app provides a seamless user experience with a clean and intuitive interface. Users can input an amount and select from a list of supported currencies to see the converted value in real-time. The application is designed to be fast, reliable, and easy to use for anyone needing to perform currency conversions on the fly.",
+		images: "/projects/currency-converter.png",
+		technologies: [
+			"Next.js",
+			"TypeScript",
+			"Tailwind CSS",
+			"Vercel"
+		],
+		category: "Educational",
+		status: "completed",
+		isLive: true,
+		liveUrl: "https://currency-convertor.pradum.dev/",
+		githubUrl: "https://github.com/Pradum-codes/currency-convertor",
+		highlights: [
+			"Real-time currency conversion with up-to-date exchange rates",
+			"Simple and intuitive interface for quick conversions",
+			"Lightweight application designed for fast performance"
+		],
+	},
+    {
+		id: "weather-app",
+		title: "Weather App",
+		description:
+			"A simple and efficient weather application that provides real-time weather information for any location.",
+		longDescription:
+			"The Weather App is a lightweight web application that allows users to quickly check the current weather conditions and forecasts for any location. Built with modern web technologies, the app provides a seamless user experience with a clean and intuitive interface. Users can input a city name or zip code to see the current weather details and a 5-day forecast. The application is designed to be fast, reliable, and easy to use for anyone needing up-to-date weather information.",
+		images: "/projects/weather-app.png",
+		technologies: [
+			"Next.js",
+			"TypeScript",
+			"Tailwind CSS",
+			"Vercel"
+		],
+		category: "Educational",
+		status: "completed",
+		isLive: true,
+		liveUrl: "https://weather-app-six-phi-13.vercel.app/",
+		githubUrl: "https://github.com/Pradum-codes/Weather-App",
+		highlights: [
+			"Real-time weather information for any location",
+			"Simple and intuitive interface for quick checks",
+			"Lightweight application designed for fast performance"
 		],
 	}
 ]

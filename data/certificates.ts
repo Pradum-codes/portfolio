@@ -25,7 +25,7 @@ const certificates: Certificate[] = [
     issued: "2024-09",
     image: "/certificates/bits-bytes.png",
     verify:
-      "https://www.coursera.org/account/accomplishments/verify/[CERTIFICATE_ID]",
+      "https://www.coursera.org/account/accomplishments/verify/CMZ84YAQYL1A",
     description:
       "Bits and Bytes of Networking is a beginner-friendly course that explains how data travels across networks, covering IP addresses, DNS, TCP/UDP, routing, and the core protocols that power the internet."
   },

@@ -46,16 +46,16 @@ export function About() {
           >
             <div className="lg:col-span-2 lg:row-span-2 border border-border/70 bg-card/60 rounded-3xl p-6 backdrop-blur-sm">
               <p className="text-xl font-medium leading-relaxed mb-4">
-                I design and build reliable software systems, from low-level
-                internals to user-facing interfaces, with clarity, correctness,
-                and long-term maintainability.
+								I build backend systems and APIs, focusing on performance, reliability, and
+								clean design. Most of my work revolves around Node.js, Java, and low-level
+								system concepts.
               </p>
               <p className="text-muted-foreground mb-3">
-                I primarily work on backend and system-level problems, but I care
-                deeply about the full product and how real users interact with it.
+								I enjoy working on problems like scaling services, designing APIs, and
+								understanding how things work under the hood — not just making them work.
               </p>
               <p className="text-sm text-muted-foreground italic mb-4">
-                Correctness over cleverness. Reliability over shortcuts.
+  							I prefer simple, maintainable solutions over clever ones.
               </p>
               <div className="flex flex-wrap gap-2">
                 {[
